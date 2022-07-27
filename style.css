@@ -1,0 +1,247 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: 400;
+}
+
+body {
+  background-color: #333;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  background-image: url(./img/fog.jpeg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.weather_card {
+  padding: 25px;
+  width: 35vw;
+  height: 80vh;
+  background: #141E30;
+  /* fallback for old browsers */
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-gradient(linear, left top, right top, from(#243B55), to(#141E30));
+  background: linear-gradient(to right, #243B55, #141E30);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.weather_card_top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 100px;
+}
+
+.weather_card_menu_burger {
+  margin: 0  7px 0;
+  width: 20px;
+  height: 15px;
+  position: relative;
+}
+
+.weather_card_menu_burger::before {
+  content: "";
+  position: absolute;
+  background-color: #fff;
+  width: 100%;
+  height: 2px;
+  top: 0;
+  left: 0;
+}
+
+.weather_card_menu_burger span {
+  content: "";
+  position: absolute;
+  background-color: #fff;
+  width: 100%;
+  height: 2px;
+  top: 7px;
+  left: 0;
+}
+
+.weather_card_menu_burger::after {
+  content: "";
+  position: absolute;
+  background-color: #fff;
+  width: 100%;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+}
+
+.weather_card_city {
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+}
+
+.weather_card_city_name {
+  font-size: 24px;
+}
+
+.weather_card_search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+}
+
+.weather_card_search img {
+  width: 25px;
+}
+
+.input_city {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.1rem 0 0.3rem 1.5rem;
+  border-radius: 20px;
+  color: #fff;
+}
+
+.input_city::-webkit-input-placeholder {
+  color: #fff;
+}
+
+.input_city:-ms-input-placeholder {
+  color: #fff;
+}
+
+.input_city::-ms-input-placeholder {
+  color: #fff;
+}
+
+.input_city::placeholder {
+  color: #fff;
+}
+
+.weather_card_condition {
+  font-size: 30px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.weather_card_degrees {
+  font-size: 80px;
+  position: relative;
+  color: #fff;
+}
+
+.weather_card_degrees::before {
+  content: "\00B0 C";
+  font-size: 24px;
+  position: absolute;
+  top: 0;
+  right: -20px;
+}
+/*# sourceMappingURL=style.css.map */
