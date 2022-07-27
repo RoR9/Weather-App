@@ -21,21 +21,41 @@
     <div class="weather_card">
         <!----Top Card-->
         <div class="weather_card_top">
-         <div class="weather_card_menu_burger"><span></span></div>   
-        <div class="weather_card_city">
-            <div class="weather_card_city_name"></div>
-            <div class="weather_card_city_time">Monday</div>
+
+            <!---Flex Left-->
+            <div class="weather_card_container_left">
+         <div class="weather_card_menu_burger"><span></span></div> 
+            </div>
+            <!---Flex Middle-->
+            <div class="weather_card_container_center">
+            <div class="weather_card_city">
+                <div class="weather_card_city_name"></div>
+                <div class="weather_card_city_time">Monday</div>
+            </div>
+            </div>
+            <!---Flex Right-->
+            <div class="weather_card_container_right">
+                <div class="weather_card_search">
+                    <input class="input_city" type="text" placeholder="City Name">
+                    <div href="#" class="input_search"><img src="./img/search.svg" alt=""></div>
+                </div>
+            </div>
+       
+
+
 
         </div>
-        <div class="weather_card_search">
-        <input class="input_city" type="text" placeholder="City Name">
-        <a href="#" class="input_search"><img src="./img/search.svg" alt=""></a>
-        </div>
-        </div>
         <div class="weather_card_condition"></div>
+        <div class="weather_card_degrees_section">
         <span class="weather_card_degrees"></span>
-    </div>
-</div>
+        </div>
+
+        </div>
+   
+
+        </div>
+        
+    
     
 </body>
 <script src="./script.js"></script>

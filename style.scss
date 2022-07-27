@@ -110,25 +110,48 @@ body{
 
 .weather_card {
     padding: 25px;
-    width: 35vw;
+    width: 600px;
     height: 80vh;
-background: #141E30;
+    background: #141E30;
     /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #243B55, #141E30);
     /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #243B55, #141E30);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: flex;
+    flex-direction: column;
 }
 
 .weather_card_top {
     display: flex;
-    justify-content: space-between;
-   
     align-items: center;
+   // justify-content: space-between;
     margin-bottom: 100px;
+}
+.weather_card_container_left{
+width: 200px;
+margin-right: auto;
+  
+}
+
+.weather_card_container_center {
+
+flex-grow: 1;
+
+
+}
+
+.weather_card_container_right{
+width: 200px;
+margin-left: auto;
+cursor: pointer;
+display: flex;
+justify-content: end;
+
 }
 
 .weather_card_menu_burger {
+   
     margin:0  7px 0;
     width: 20px;
     height: 15px;
@@ -170,20 +193,25 @@ background: #141E30;
 
 .weather_card_city {
     color: #fff;
-    
     display: flex;
     flex-direction: column;
     align-items: center; 
-    justify-content: end;
+    
+    
+    
 }
 
 .weather_card_city_name {
-    font-size: 24px;
+    font-size: 34px;
+    margin-bottom: 7px;
 }
 
-.weather_card_city_time {}
+.weather_card_city_time {
+
+}
 
 .weather_card_search {
+    
     display: flex;
     gap: 10px;
 
@@ -196,7 +224,7 @@ background: #141E30;
     
 }
 .input_city{
-    
+    max-width: 130px;
     opacity: 0;
     transform: translate(20px,0px);
     transition:all 0.4s ease-in;
@@ -229,6 +257,7 @@ background: #141E30;
 
 
 .input_search {
+    
 
     }
 
@@ -239,7 +268,12 @@ background: #141E30;
     
 }
 
+.weather_card_degrees_section{
+    display: flex;
+}
+
 .weather_card_degrees {
+    
     font-size: 80px;
     position: relative;
     color: #fff;
@@ -248,8 +282,8 @@ background: #141E30;
         content: "\00B0 C";
         font-size: 24px;
         position: absolute;
-            top: 0;
-            right: -20px;
+            top: 5px;
+            right: -32px;
 
     }
 }
