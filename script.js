@@ -4,7 +4,8 @@ const city = document.querySelector(".weather_card_city_name")
 const temperature = document.querySelector(".weather_card_degrees")
 const weatherCondition = document.querySelector(".weather_card_condition")
 const searchBar = document.querySelector(".input_search")
-const inputCity=document.querySelector(".input_city")
+const inputCity = document.querySelector(".input_city")
+const timeCity=document.querySelector(".weather_card_city_time")
 
 
 async function getWeather(city) {
@@ -23,13 +24,46 @@ function createWeather(weather) {
     temperature.textContent = Math.round(weather.main.temp)
     const weatherConditionText = weather.weather[0].description.split(" ").map(desc=>desc[0].toUpperCase()+desc.slice(1)).join(" ")
     console.log(weatherConditionText)
-    weatherCondition.textContent=weatherConditionText
+    weatherCondition.textContent = weatherConditionText
+    displayTime(weather)
+    setInterval(()=>displayTime(weather),60000)
 }
 
 searchBar.addEventListener("click", function searchCity() {
+    
+    inputCity.classList.toggle("active")
     if (inputCity.value.length === 0) {
         return
     }
     console.log(inputCity.value)
     getWeather(inputCity.value)
+    inputCity.value = ""
+    inputCity.classList.remove("active")
+    
 })
+
+
+function timeZone(time) {
+
+d = new Date()
+localTime = d.getTime()
+localOffset = d.getTimezoneOffset() * 60000
+utc = localTime + localOffset
+var city = utc + (1000 * time) 
+return new Date(city)
+}
+
+
+function displayTime (weather) {
+        let time = String(timeZone(weather.timezone))
+        console.log("done")
+    timeCity.textContent = time.split(" ")[0] + ", " + time.split(" ")[4].slice(0, 5)
+    
+}
+
+
+
+
+
+
+

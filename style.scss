@@ -195,9 +195,27 @@ background: #141E30;
     }
     
 }
+.input_city{
+    
+    opacity: 0;
+    transform: translate(20px,0px);
+    transition:all 0.4s ease-in;
+    background: rgba(255, 255, 255, 0.2);
+        padding: 0.1rem 0 0.3rem 1.5rem;
+        border-radius: 20px;
+        color: #fff;
+    
+        &::placeholder {
+            color: #fff;
+    
+        }
+}
 
-.input_city {
-   // display: none;
+.input_city.active{
+    
+   opacity: 1;
+   transform: translate(0);
+   display: inline;
     background: rgba(255, 255, 255, 0.2);
     padding: 0.1rem 0 0.3rem 1.5rem;
     border-radius: 20px;
@@ -208,6 +226,7 @@ background: #141E30;
         
     }
 }
+
 
 .input_search {
 
