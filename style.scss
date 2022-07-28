@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap');
 * {
     padding: 0;
     margin: 0;
@@ -103,6 +104,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    
 
     
 }
@@ -120,6 +122,7 @@ body{
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     display: flex;
     flex-direction: column;
+    font-family: "Montserrat";
 }
 
 .weather_card_top {
@@ -137,6 +140,7 @@ margin-right: auto;
 .weather_card_container_center {
 
 flex-grow: 1;
+
 
 
 }
@@ -199,11 +203,13 @@ justify-content: end;
     
     
     
+    
 }
 
 .weather_card_city_name {
     font-size: 34px;
     margin-bottom: 7px;
+    text-align: center;
 }
 
 .weather_card_city_time {
@@ -285,5 +291,20 @@ justify-content: end;
             top: 5px;
             right: -32px;
 
+    }
+}
+
+.fade-in2 {
+    animation: fadeIn2 1.6s;
+}
+
+@keyframes fadeIn2 {
+    0% {
+        opacity: 0.1;
+        transform: scale(0.9, 0.9);
+    }
+
+    100% {
+        opacity: 1;
     }
 }

@@ -5,7 +5,8 @@ const temperature = document.querySelector(".weather_card_degrees")
 const weatherCondition = document.querySelector(".weather_card_condition")
 const searchBar = document.querySelector(".input_search")
 const inputCity = document.querySelector(".input_city")
-const timeCity=document.querySelector(".weather_card_city_time")
+const timeCity = document.querySelector(".weather_card_city_time")
+const animItems2=document.querySelectorAll(".anim_items2")
 
 
 async function getWeather(city) {
@@ -21,6 +22,21 @@ getWeather("london")
 function createWeather(weather) {
     console.log(weather)
     city.textContent = weather.name
+    
+    Array.from(animItems2).forEach(animItem => {
+        if (animItem.classList.contains("fade-in2")) {
+        animItem.classList.remove("fade-in2")
+        animItem.offsetWidth;
+        animItem.classList.add('fade-in2')
+    }
+    else {
+        animItem.classList.add("fade-in2")
+    
+        
+    }})
+    
+    
+        
     temperature.textContent = Math.round(weather.main.temp)
     const weatherConditionText = weather.weather[0].description.split(" ").map(desc=>desc[0].toUpperCase()+desc.slice(1)).join(" ")
     console.log(weatherConditionText)
