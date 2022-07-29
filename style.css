@@ -112,7 +112,7 @@ body {
 .weather_card {
   padding: 25px;
   width: 600px;
-  height: 80vh;
+  max-height: 600px;
   background: #141E30;
   /* fallback for old browsers */
   /* Chrome 10-25, Safari 5.1-6 */
@@ -127,8 +127,61 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   font-family: "Montserrat";
+  position: relative;
 }
 
+.weather_card_info {
+  position: absolute;
+  background-color: inherit;
+  width: inherit;
+  background: #141E30;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  opacity: 0;
+  -webkit-transition: all ease-in 0.3s;
+  transition: all ease-in 0.3s;
+  display: none;
+}
+
+.weather_card_info.active {
+  opacity: 1;
+  display: block;
+}
+
+.weather_card_items {
+  padding: 150px 50px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.weather_card_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #fff;
+  font-size: 24px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 50%;
+          flex: 0 1 50%;
+  height: 150px;
+  gap: 5px;
+}
+
+.weather_card_item img {
+  width: 50px;
+  height: 50px;
+}
+
+.weather_card_item_title {
+  margin-bottom: 10px;
+}
+
+/*********** Top Menu *********/
 .weather_card_top {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -167,6 +220,7 @@ body {
   width: 20px;
   height: 15px;
   position: relative;
+  z-index: 101;
 }
 
 .weather_card_menu_burger::before {
@@ -177,6 +231,8 @@ body {
   height: 2px;
   top: 0;
   left: 0;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
 }
 
 .weather_card_menu_burger span {
@@ -197,6 +253,25 @@ body {
   height: 2px;
   left: 0;
   bottom: 0;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+.weather_card_menu_burger.active:after {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  top: 9px;
+}
+
+.weather_card_menu_burger.active:before {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  top: 9px;
+}
+
+.weather_card_menu_burger.active span {
+  -webkit-transform: scale(0);
+          transform: scale(0);
 }
 
 .weather_card_city {
@@ -211,6 +286,8 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
+  z-index: 101;
 }
 
 .weather_card_city_name {
@@ -309,7 +386,11 @@ body {
 .weather_card_condition {
   font-size: 30px;
   color: #fff;
-  margin-bottom: 20px;
+}
+
+.weather_icon {
+  width: 100px;
+  height: 100px;
 }
 
 .weather_card_degrees_section {

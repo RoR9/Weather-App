@@ -7,7 +7,14 @@ const searchBar = document.querySelector(".input_search")
 const inputCity = document.querySelector(".input_city")
 const timeCity = document.querySelector(".weather_card_city_time")
 const animItems2 = document.querySelectorAll(".anim_items2")
-const errorMsg=document.querySelector(".error_msg")
+const errorMsg = document.querySelector(".error_msg")
+const iconWeather = document.querySelector(".weather_icon")
+const menuBurger = document.querySelector(".weather_card_menu_burger")
+const weatherCardInfo = document.querySelector(".weather_card_info")
+const weatherCardInfoHumidity = document.querySelector(".humidity")
+const weatherCardInfoRain = document.querySelector(".rain")
+const weatherCardInfoThermo = document.querySelector(".thermo")
+const weatherCardInfoWind=document.querySelector(".wind")
 
 
 async function getWeather(city) {
@@ -24,8 +31,6 @@ async function getWeather(city) {
         errorMsg.classList.remove("active")
     }
 
-    let iconId=weather.weather[0].icon
-    console.log(`http://openweathermap.org/img/wn/${iconId}@2x.png`)
     
 }
 getWeather("london")
@@ -52,6 +57,15 @@ function createWeather(weather) {
     const weatherConditionText = weather.weather[0].description.split(" ").map(desc=>desc[0].toUpperCase()+desc.slice(1)).join(" ")
     console.log(weatherConditionText)
     weatherCondition.textContent = weatherConditionText
+    //Icon 
+    let iconId=weather.weather[0].icon
+    iconWeather.src = `http://openweathermap.org/img/wn/${iconId}@2x.png`
+    //Weather Card
+    weatherCardInfoThermo.textContent = Math.round(weather.main.feels_like)
+   // weatherCardInfoRain.textContent = weather.main.feels_like
+    weatherCardInfoHumidity.textContent = `${weather.main.humidity} %`
+     weatherCardInfoWind.textContent = `${weather.wind.speed} km/h`
+    
     displayTime(weather)
     setInterval(()=>displayTime(weather),60000)
 }
@@ -88,6 +102,13 @@ function displayTime (weather) {
     timeCity.textContent = time.split(" ")[0] + ", " + time.split(" ")[4].slice(0, 5)
     
 }
+
+
+menuBurger.addEventListener("click", function () {
+    menuBurger.classList.toggle("active")
+    weatherCardInfo.classList.toggle("active")
+
+})
 
 
 

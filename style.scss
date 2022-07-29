@@ -113,7 +113,7 @@ body{
 .weather_card {
     padding: 25px;
     width: 600px;
-    height: 80vh;
+    max-height: 600px;
     background: #141E30;
     /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #243B55, #141E30);
@@ -123,8 +123,62 @@ body{
     display: flex;
     flex-direction: column;
     font-family: "Montserrat";
+    position: relative;
 }
 
+.weather_card_info {
+    position: absolute;
+    background-color: inherit;
+    width:inherit;
+    background: #141E30;
+    height: 100%;
+    top:0;
+    left: 0;
+    z-index: 100;
+    opacity: 0;
+    transition: all ease-in 0.3s ;
+    display: none;
+    &.active{
+        opacity: 1;
+        display: block;
+    }
+}
+
+
+.weather_card_items {
+    padding: 150px 50px 0;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.weather_card_item {
+    display: flex;
+    color: #fff;    
+    font-size: 24px;
+    flex: 0 1 50%;
+    height: 150px;
+    gap: 5px;
+    
+
+    img{
+        width: 50px;
+        height: 50px;
+    }
+}
+
+.weather_card_item_text {}
+    
+
+.weather_card_item_title {
+    margin-bottom: 10px;
+}
+
+.weather_card_item_descritpion {}
+
+
+
+/*********** Top Menu *********/
 .weather_card_top {
     display: flex;
     align-items: center;
@@ -160,6 +214,7 @@ justify-content: end;
     width: 20px;
     height: 15px;
     position: relative;
+    z-index: 101;
 
     &::before{
         content: "";
@@ -169,6 +224,7 @@ justify-content: end;
         height: 2px;
         top:0;
         left: 0;
+        transition: all 0.2s ease-in;
     }
 
     span{
@@ -189,8 +245,25 @@ justify-content: end;
             height: 2px;
             left: 0;
             bottom: 0;
+            transition: all 0.2s ease-in;
 
     }
+
+        &.active {
+            &:after {
+                transform: rotate(45deg);
+                top: 9px;
+            }
+    
+            &:before {
+                transform: rotate(-45deg);
+                top: 9px;
+            }
+    
+            span {
+                transform: scale(0);
+            }
+        }
 
 
 }
@@ -200,9 +273,8 @@ justify-content: end;
     display: flex;
     flex-direction: column;
     align-items: center; 
-    
-    
-    
+    position: relative;
+    z-index: 101;    
     
 }
 
@@ -291,13 +363,19 @@ opacity: 0;
 .weather_card_condition {
     font-size: 30px;
     color: #fff;
-    margin-bottom: 20px;
     
+    
+}
+.weather_icon {
+    width: 100px;
+    height: 100px;
 }
 
 .weather_card_degrees_section{
     display: flex;
 }
+
+
 
 .weather_card_degrees {
     
@@ -329,3 +407,4 @@ opacity: 0;
         opacity: 1;
     }
 }
+
