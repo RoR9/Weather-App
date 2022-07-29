@@ -6,16 +6,27 @@ const weatherCondition = document.querySelector(".weather_card_condition")
 const searchBar = document.querySelector(".input_search")
 const inputCity = document.querySelector(".input_city")
 const timeCity = document.querySelector(".weather_card_city_time")
-const animItems2=document.querySelectorAll(".anim_items2")
+const animItems2 = document.querySelectorAll(".anim_items2")
+const errorMsg=document.querySelector(".error_msg")
 
 
 async function getWeather(city) {
     const response=await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=00b06629f7f045837e4b528cd08b2bc4&units=metric`,{mode:"cors"})
     const weather = await response.json()
+    if (weather.cod == 404) {
+        inputCity.classList.add("active")
+        errorMsg.classList.add("active")
+        
+        
+    }
+    else {
+        createWeather(weather)
+        errorMsg.classList.remove("active")
+    }
 
     let iconId=weather.weather[0].icon
     console.log(`http://openweathermap.org/img/wn/${iconId}@2x.png`)
-    createWeather(weather)
+    
 }
 getWeather("london")
 
@@ -49,6 +60,7 @@ searchBar.addEventListener("click", function searchCity() {
     
     inputCity.classList.toggle("active")
     if (inputCity.value.length === 0) {
+        errorMsg.classList.remove("active")
         return
     }
     console.log(inputCity.value)

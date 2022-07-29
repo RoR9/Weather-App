@@ -224,6 +224,7 @@ body {
   display: -ms-flexbox;
   display: flex;
   gap: 10px;
+  position: relative;
 }
 
 .weather_card_search img {
@@ -284,6 +285,25 @@ body {
 
 .input_city.active::placeholder {
   color: #fff;
+}
+
+.error_msg {
+  position: absolute;
+  display: inline;
+  left: 0;
+  bottom: 0px;
+  font-size: 12px;
+  color: #fff;
+  font-weight: 400;
+  font-style: italic;
+  -webkit-transition: all ease-in 0.3s;
+  transition: all ease-in 0.3s;
+  opacity: 0;
+}
+
+.error_msg.active {
+  bottom: -20px;
+  opacity: 1;
 }
 
 .weather_card_condition {
