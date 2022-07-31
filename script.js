@@ -17,6 +17,7 @@ const weatherCardInfoThermo = document.querySelector(".thermo")
 const weatherCardInfoWind=document.querySelector(".wind")
 
 
+
 async function getWeather(city) {
     const response=await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=00b06629f7f045837e4b528cd08b2bc4&units=metric`,{mode:"cors"})
     const weather = await response.json()
@@ -29,14 +30,17 @@ async function getWeather(city) {
     else {
         createWeather(weather)
         errorMsg.classList.remove("active")
+        return
     }
-
+    const hourly = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=00b06629f7f045837e4b528cd08b2bc4&units=metric`,{mode:"cors"})
+    const hourlyWeather = await hourly.json()
+    //console.log(hourlyWeather)
     
 }
-getWeather("london")
+window.addEventListener("onload",getWeather("london"))
 
 function createWeather(weather) {
-    console.log(weather)
+   // console.log(weather)
     city.textContent = weather.name
     
     Array.from(animItems2).forEach(animItem => {
@@ -55,7 +59,7 @@ function createWeather(weather) {
         
     temperature.textContent = Math.round(weather.main.temp)
     const weatherConditionText = weather.weather[0].description.split(" ").map(desc=>desc[0].toUpperCase()+desc.slice(1)).join(" ")
-    console.log(weatherConditionText)
+    //console.log(weatherConditionText)
     weatherCondition.textContent = weatherConditionText
     //Icon 
     let iconId=weather.weather[0].icon
@@ -66,8 +70,12 @@ function createWeather(weather) {
     weatherCardInfoHumidity.textContent = `${weather.main.humidity} %`
      weatherCardInfoWind.textContent = `${weather.wind.speed} km/h`
     
+    
     displayTime(weather)
-    setInterval(()=>displayTime(weather),60000)
+    console.log(city.textContent)
+   
+    setInterval(() => weather.name === city.textContent?displayTime(weather):false
+    ,60000)
 }
 
 searchBar.addEventListener("click", function searchCity() {
@@ -77,7 +85,7 @@ searchBar.addEventListener("click", function searchCity() {
         errorMsg.classList.remove("active")
         return
     }
-    console.log(inputCity.value)
+    //console.log(inputCity.value)
     getWeather(inputCity.value)
     inputCity.value = ""
     inputCity.classList.remove("active")
@@ -97,8 +105,10 @@ return new Date(city)
 
 
 function displayTime (weather) {
-        let time = String(timeZone(weather.timezone))
-        console.log("done")
+    let time = String(timeZone(weather.timezone))
+    let newTime = time.split(" ")[0] + ", " + time.split(" ")[4].slice(0, 5)
+    console.log(weather)
+    console.log(newTime)
     timeCity.textContent = time.split(" ")[0] + ", " + time.split(" ")[4].slice(0, 5)
     
 }
