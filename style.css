@@ -93,7 +93,7 @@ body {
 
 .container {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-image: url(./img/fog.jpeg);
   background-position: center;
   background-repeat: no-repeat;
@@ -112,7 +112,7 @@ body {
 .weather_card {
   padding: 25px;
   width: 600px;
-  max-height: 600px;
+  height: 550px;
   background: #141E30;
   /* fallback for old browsers */
   /* Chrome 10-25, Safari 5.1-6 */
@@ -151,7 +151,7 @@ body {
 }
 
 .weather_card_items {
-  padding: 150px 50px 0;
+  padding: 185px 50px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -181,6 +181,18 @@ body {
   margin-bottom: 10px;
 }
 
+.thermo {
+  position: relative;
+}
+
+.thermo::before {
+  content: "\00B0 C";
+  font-size: 14px;
+  position: absolute;
+  top: 0px;
+  left: 30px;
+}
+
 /*********** Top Menu *********/
 .weather_card_top {
   display: -webkit-box;
@@ -189,7 +201,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-bottom: 100px;
+  margin-bottom: 30px;
 }
 
 .weather_card_container_left {
@@ -316,7 +328,7 @@ body {
   -webkit-transition: all 0.4s ease-in;
   transition: all 0.4s ease-in;
   background: rgba(255, 255, 255, 0.2);
-  padding: 0.1rem 0 0.3rem 1.5rem;
+  padding: 0.1rem 0rem 0.3rem 1.5rem;
   border-radius: 20px;
   color: #fff;
 }
@@ -343,7 +355,7 @@ body {
           transform: translate(0);
   display: inline;
   background: rgba(255, 255, 255, 0.2);
-  padding: 0.1rem 0 0.3rem 1.5rem;
+  padding: 0.1rem 0.9rem 0.3rem 1.5rem;
   border-radius: 20px;
   color: #fff;
 }
@@ -411,6 +423,52 @@ body {
   position: absolute;
   top: 5px;
   right: -32px;
+}
+
+/******** Weather Forecast *****/
+.forecast_section {
+  margin-top: 30px;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.forecast_section_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.forecast_item {
+  width: 100px;
+  text-align: center;
+}
+
+.forecast_item_time {
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.forecast_item_temp {
+  font-size: 18px;
+  position: relative;
+}
+
+.forecast_item_temp::before {
+  content: "\00B0 C";
+  font-size: 12px;
+  position: absolute;
+  top: 0px;
+  right: 23px;
+}
+
+.forecast_item_img img {
+  width: 100px;
+  height: 100px;
 }
 
 .fade-in2 {

@@ -14,7 +14,8 @@ const weatherCardInfo = document.querySelector(".weather_card_info")
 const weatherCardInfoHumidity = document.querySelector(".humidity")
 const weatherCardInfoRain = document.querySelector(".rain")
 const weatherCardInfoThermo = document.querySelector(".thermo")
-const weatherCardInfoWind=document.querySelector(".wind")
+const weatherCardInfoWind = document.querySelector(".wind")
+const forecastContainer=document.querySelector(".forecast_section_container")
 
 
 
@@ -23,26 +24,20 @@ async function getWeather(city) {
     const weather = await response.json()
     if (weather.cod == 404) {
         inputCity.classList.add("active")
-        errorMsg.classList.add("active")
-        
-        
+        errorMsg.classList.add("active") 
     }
     else {
         createWeather(weather)
         errorMsg.classList.remove("active")
-        return
     }
     const hourly = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=00b06629f7f045837e4b528cd08b2bc4&units=metric`,{mode:"cors"})
     const hourlyWeather = await hourly.json()
-    //console.log(hourlyWeather)
+    hourlyWeather.list.slice(0,5).forEach(hour=>createHourWeather(hour))
     
 }
-window.addEventListener("onload",getWeather("london"))
+window.addEventListener("DOMContentLoaded",getWeather("london"))
 
 function createWeather(weather) {
-   // console.log(weather)
-    city.textContent = weather.name
-    
     Array.from(animItems2).forEach(animItem => {
         if (animItem.classList.contains("fade-in2")) {
         animItem.classList.remove("fade-in2")
@@ -56,10 +51,9 @@ function createWeather(weather) {
     }})
     
     
-        
+    city.textContent = weather.name    
     temperature.textContent = Math.round(weather.main.temp)
     const weatherConditionText = weather.weather[0].description.split(" ").map(desc=>desc[0].toUpperCase()+desc.slice(1)).join(" ")
-    //console.log(weatherConditionText)
     weatherCondition.textContent = weatherConditionText
     //Icon 
     let iconId=weather.weather[0].icon
@@ -72,8 +66,8 @@ function createWeather(weather) {
     
     
     displayTime(weather)
-    console.log(city.textContent)
-   
+    
+     //Refresh clock
     setInterval(() => weather.name === city.textContent?displayTime(weather):false
     ,60000)
 }
@@ -85,7 +79,7 @@ searchBar.addEventListener("click", function searchCity() {
         errorMsg.classList.remove("active")
         return
     }
-    //console.log(inputCity.value)
+   
     getWeather(inputCity.value)
     inputCity.value = ""
     inputCity.classList.remove("active")
@@ -94,7 +88,6 @@ searchBar.addEventListener("click", function searchCity() {
 
 
 function timeZone(time) {
-
 d = new Date()
 localTime = d.getTime()
 localOffset = d.getTimezoneOffset() * 60000
@@ -107,8 +100,6 @@ return new Date(city)
 function displayTime (weather) {
     let time = String(timeZone(weather.timezone))
     let newTime = time.split(" ")[0] + ", " + time.split(" ")[4].slice(0, 5)
-    console.log(weather)
-    console.log(newTime)
     timeCity.textContent = time.split(" ")[0] + ", " + time.split(" ")[4].slice(0, 5)
     
 }
@@ -120,6 +111,25 @@ menuBurger.addEventListener("click", function () {
 
 })
 
+function createHourWeather(hour) {
+    const foreCastItems = document.querySelectorAll(".forecast_item")
+    if (foreCastItems.length === 5) {
+        forecastContainer.innerHTML=``
+    }
+    const element = document.createElement("div")
+    element.classList.add("forecast_item")
+    
+    element.innerHTML=`
+                    <div class="forecast_item_time ">${hour.dt_txt.slice(11,13)}</div>
+                    <div class="forecast_item_temp ">${Math.round(hour.main.temp)}</div>
+                    <div class="forecast_item_img "><img src="http://openweathermap.org/img/wn/${hour.weather[0].icon}@2x.png" alt=""></div>
+                    `
+    
+    forecastContainer.appendChild(element)
+    
+    
+    
+}
 
 
 
