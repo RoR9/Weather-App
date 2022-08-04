@@ -319,6 +319,7 @@ body {
 
 .weather_card_search img {
   width: 25px;
+  padding: 0;
 }
 
 .input_city {

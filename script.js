@@ -72,7 +72,9 @@ function createWeather(weather) {
     ,60000)
 }
 
-searchBar.addEventListener("click", function searchCity() {
+searchBar.addEventListener("click",searchCity)
+
+function searchCity() {
     
     inputCity.classList.toggle("active")
     if (inputCity.value.length === 0) {
@@ -84,8 +86,7 @@ searchBar.addEventListener("click", function searchCity() {
     inputCity.value = ""
     inputCity.classList.remove("active")
     
-})
-
+}
 
 function timeZone(time) {
 d = new Date()
@@ -131,6 +132,10 @@ function createHourWeather(hour) {
     
 }
 
+
+document.addEventListener('keydown', function(event){
+  return inputCity.value.length>0 &&(event.keyCode==13)? searchCity() :null;
+} );
 
 
 
